@@ -13,6 +13,7 @@ RAVENDARKD_BIN=$(top_builddir)/src/ravendarkd$(EXEEXT)
 RAVENDARK_QT_BIN=$(top_builddir)/src/qt/ravendark-qt$(EXEEXT)
 RAVENDARK_CLI_BIN=$(top_builddir)/src/ravendark-cli$(EXEEXT)
 RAVENDARK_WIN_INSTALLER=$(PACKAGE)-$(PACKAGE_VERSION)-win$(WINDOWS_BITS)-setup$(EXEEXT)
+RAVENDARK_CLI_INSTALL=$(top_builddir)/contrib/install_cli.sh
 
 OSX_APP=RavenDark-Qt.app
 OSX_DMG=RavenDark-Core.dmg
@@ -86,6 +87,10 @@ $(OSX_APP)/Contents/Resources/ravendark.icns: $(OSX_INSTALLER_ICONS)
 	$(MKDIR_P) $(@D)
 	$(INSTALL_DATA) $< $@
 
+$(OSX_APP)/Contents/MacOS/install_cli.sh: $(RAVENDARK_CLI_INSTALL)
+	$(MKDIR_P) $(@D)
+	$(INSTALL_DATA) $< $@
+
 $(OSX_APP)/Contents/MacOS/RavenDark-Qt: $(RAVENDARK_QT_BIN)
 	$(MKDIR_P) $(@D)
 	STRIPPROG="$(STRIP)" $(INSTALL_STRIP_PROGRAM)  $< $@
@@ -96,7 +101,9 @@ $(OSX_APP)/Contents/Resources/Base.lproj/InfoPlist.strings: $(OSX_BASE_LPROJ_DIR
 
 OSX_APP_BUILT=$(OSX_APP)/Contents/PkgInfo $(OSX_APP)/Contents/Resources/empty.lproj \
   $(OSX_APP)/Contents/Resources/ravendark.icns $(OSX_APP)/Contents/Info.plist \
-  $(OSX_APP)/Contents/MacOS/RavenDark-Qt $(OSX_APP)/Contents/Resources/Base.lproj/InfoPlist.strings
+  $(OSX_APP)/Contents/MacOS/RavenDark-Qt $(OSX_APP)/Contents/Resources/Base.lproj/InfoPlist.strings \
+  $(OSX_APP)/Contents/MacOS/ravendarkd $(OSX_APP)/Contents/MacOS/ravendark-cli $(OSX_APP)/Contents/MacOS/install_cli.sh
+
 
 osx_volname:
 	echo $(OSX_VOLNAME) >$@
