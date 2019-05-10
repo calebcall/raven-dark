@@ -5,10 +5,11 @@ define(_CLIENT_VERSION_MINOR, 3)
 define(_CLIENT_VERSION_REVISION, 2)
 define(_CLIENT_VERSION_IS_RELEASE, true)
 define(_COPYRIGHT_YEAR, 2019)
-AC_INIT([RavenDark Core],[_CLIENT_VERSION_MAJOR._CLIENT_VERSION_MINOR._CLIENT_VERSION_REVISION],[https://github.com/ravendark/ravendark/issues],[ravendarkcore])
+AC_INIT([RavenDark Core],[_CLIENT_VERSION_MAJOR._CLIENT_VERSION_MINOR._CLIENT_VERSION_REVISION],[https://github.com/raven-dark/raven-dark/issues],[ravendarkcore])
 AC_CONFIG_SRCDIR([src/validation.cpp])
 AC_CONFIG_HEADERS([src/config/ravendark-config.h])
 AC_CONFIG_AUX_DIR([build-aux])
+
 AC_CONFIG_MACRO_DIR([build-aux/m4])
 
 AC_CANONICAL_HOST
