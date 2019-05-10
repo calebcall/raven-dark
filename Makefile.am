@@ -99,7 +99,7 @@ OSX_APP_BUILT=$(OSX_APP)/Contents/PkgInfo $(OSX_APP)/Contents/Resources/empty.lp
   $(OSX_APP)/Contents/MacOS/RavenDark-Qt $(OSX_APP)/Contents/Resources/Base.lproj/InfoPlist.strings
 
 osx_volname:
-  echo $(OSX_VOLNAME) >$@
+	echo $(OSX_VOLNAME) >$@
 
 if BUILD_DARWIN
 $(OSX_DMG): $(OSX_APP_BUILT) $(OSX_PACKAGING)
